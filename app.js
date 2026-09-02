@@ -15,3 +15,7 @@ function toggleSpeech(button,text,rate){if(window.speechSynthesis.speaking){wind
 document.querySelector('#clip-play').addEventListener('click',e=>toggleSpeech(e.currentTarget,'In a world full of notifications, attention has become one of our most valuable resources. Start with one small, focused moment.',.76));
 document.querySelector('#shadow-play').addEventListener('click',e=>toggleSpeech(e.currentTarget,'I used to think I had to be ready before I could start.',.72));
 document.querySelectorAll('.travel-play').forEach(btn=>btn.addEventListener('click',e=>toggleSpeech(e.currentTarget,e.currentTarget.dataset.speech,.8)));
+const modal=document.querySelector('#video-modal'),frame=document.querySelector('#film-frame');
+function openFilm(){frame.src='https://www.youtube-nocookie.com/embed/WjqiU5FgsYc?autoplay=1&rel=0';modal.classList.add('open');modal.setAttribute('aria-hidden','false')}
+function closeFilm(){frame.src='about:blank';modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}
+document.querySelector('#film-open').addEventListener('click',openFilm);document.querySelector('#video-close').addEventListener('click',closeFilm);modal.addEventListener('click',e=>{if(e.target===modal)closeFilm()});
